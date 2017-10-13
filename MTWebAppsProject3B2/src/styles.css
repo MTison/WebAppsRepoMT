@@ -1,2 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
-@import "../node_modules/semantic/dist/semantic.min.css"
+@import "../node_modules/semantic/dist/semantic.min.css";
+
+html{
+    overflow: hidden;
+}
+
+body {
+    color: black;
+    background-image: -webkit-radial-gradient(center center, circle cover,
+     rgb(247, 251, 252) 0%, rgb(170, 170, 170) 100%);
+}

@@ -1,0 +1,29 @@
+#loginForm {
+    width: 40%;
+    height: 35%;
+    margin: 12% 0% 0% 30%; /*top right bottom left*/
+}
+
+#loginIcon {
+    font-size: 18px;
+    margin: 0% 1% 0% 0%; /*top right bottom left*/
+}
+
+#usernameIcon,#passwordIcon {
+    font-size: 11px;
+}
+
+#loginTitle {
+    display: inline;
+}
+
+#loginRegisterBttns {
+    width: 60%;
+    margin: 4% 0% 0% 20%; /*top right bottom left*/
+}
+
+#loginBttn, #registerBttn {
+    font-size: 15px;
+    width: 30%;
+}
+
