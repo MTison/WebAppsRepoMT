@@ -19,7 +19,7 @@
 
 #loginRegisterBttns {
     width: 60%;
-    margin: 4% 0% 0% 20%; /*top right bottom left*/
+    margin: 0% 0% 0% 20%; /*top right bottom left*/
 }
 
 #loginBttn, #registerBttn {

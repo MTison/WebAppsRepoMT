@@ -1,0 +1,52 @@
+<form class="ui large form segment" id="registerForm" [formGroup]='user' (ngSubmit)='onSubmit()'>
+  <div class="field">
+    <h1 class="ui header" id="registerTitle">Register</h1>
+  </div>
+  <div class="field">
+    <label for="firstname">First name:</label> 
+    <input id="firstname" placeholder="first name" formControlName="firstname"> 
+  </div>
+  <div class="field">
+    <label for="lastname">Last name:</label> 
+    <input id="lastname" placeholder="last name" formControlName="lastname">
+  </div>
+  <div class="field">
+    <label for="name">Username:</label> 
+    <input id="name" placeholder="example" formControlName="username">
+  </div>
+  <div class="field">
+    <label for="email">Email:</label> 
+    <input id="email" placeholder="example@example.com" formControlName="email">
+  </div>
+  <button type="submit" class="ui blue button" id="registerBttn">Register</button>
+</form>
+
+<!-- 
+<form class="ui large form segment" id="registerForm" #f='ngForm' (ngSubmit)='onSubmit()'>
+  <div class="field">
+    <h1 class="ui header" id="registerTitle">Register</h1>
+  </div>
+  <div class="field">
+    <label for="firstname">First name:</label> 
+    <input id="firstname" placeholder="first name" name="firstname" ngModel [(ngModel)]='user.firstname'> 
+  </div>
+  <div class="field">
+    <label for="lastname">Last name:</label> 
+    <input id="lastname" placeholder="last name" name="lastname" ngModel [(ngModel)]='user.lastname'>
+  </div>
+  <div class="field">
+    <label for="name">Username:</label> 
+    <input id="name" placeholder="example" name="name" ngModel [(ngModel)]='user.username' required minlength="4" #nameInput='ngModule'>
+    <div class="error" *ngIf="nameInput.errors && nameInput.touched">
+      Username is required and should contain at least 4 character
+    </div>
+  </div>
+  <div class="field">
+    <label for="email">Email:</label> 
+    <input id="email" placeholder="example@example.com" name="email" ngModel [(ngModel)]='user.email'>
+  </div>
+  <button type="submit" class="ui blue button" id="registerBttn" [disabled]= '!f.valid'>Register</button>
+</form> 
+-->
+
+
