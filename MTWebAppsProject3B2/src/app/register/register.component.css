@@ -1,3 +1,20 @@
-.ng-valid[required]  {
-    border-left: 10px solid #42A948;
+#registerForm {
+    width: 55%;
+    height: auto;
+    max-height: 80%;
+    margin: 6% 0% 0% 22.5%; /*top right bottom left*/
+    overflow-y: auto;
+}
+
+#formContent {
+    margin-top: 5%;
+    overflow-y: auto;
+}
+
+#registerBttn {
+    margin-top: 3%;
+}
+
+#error {
+    background-color: rgba(255, 75, 75, 0.356);
 }

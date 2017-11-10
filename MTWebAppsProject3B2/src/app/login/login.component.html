@@ -1,19 +1,26 @@
-<form class="ui large form segment" id="loginForm">
+<form class="ui large form segment" id="loginForm" #f='ngForm' (ngSubmit)='login()'>
   <div class="field">
     <i class="bordered inverted black users icon" id="loginIcon"></i>
     <h1 class="ui header" id="loginTitle">Login</h1>
   </div>
   <div class="field">
     <label for="name"><i class="home icon" id="usernameIcon"></i>Username:</label> 
-    <input id="name" placeholder="example">
+    <input id="name" placeholder="example" name="username" [(ngModel)]='user.username' required pattern="[a-zA-Z0-9]*" #username="ngModel">
+    <div class="ui pointing label" *ngIf="username.errors && username.dirty" id="error">
+        <div *ngIf="username.errors.required">Username is required</div>
+        <div *ngIf="username.errors.pattern">Username has unidentified characters</div>
+    </div>
   </div>
   <div class="field">
     <label for="password"><i class="privacy icon" id="passwordIcon"></i>Password:</label> 
-    <input id="password" type="password">
+    <input id="password" type="password" name="password" [(ngModel)]='user.password' required #password="ngModel">
+    <div class="ui pointing label" *ngIf="password.errors?.required && password.dirty" id="error">
+        Password is required
+    </div>
   </div>
   <div class="ui buttons" id="loginRegisterBttns" >
-    <button class="ui button" id="loginBttn">Log in</button>
+    <button type="submit" class="ui button" id="loginBttn" [disabled]='!f.valid'>Log in</button>
     <div class="or"></div>
-    <button class="ui blue button" id="registerBttn" (click)="login()">Register</button>
+    <button class="ui blue button" id="registerBttn" (click)="register()">Register</button>
   </div>
 </form>

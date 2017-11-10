@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 
 
@@ -6,7 +7,6 @@ export class AuthenticationService {
     logedIn: boolean = false;
 
     constructor () {
-
     }
 
     isAuthenticated() {
@@ -14,6 +14,6 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string) {
-        
+        console.log(username + " " + password);
     }
 }

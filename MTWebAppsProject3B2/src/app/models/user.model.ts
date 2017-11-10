@@ -26,5 +26,12 @@ export class User {
         this._email = email;
     }
     
-    
+    toJSON() {
+        return {
+            username : this._username,
+            firstname: this._firstName,
+            lastname : this._lastName,
+            email : this._email
+        };
+    }
 }

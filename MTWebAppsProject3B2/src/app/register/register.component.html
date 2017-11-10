@@ -2,51 +2,41 @@
   <div class="field">
     <h1 class="ui header" id="registerTitle">Register</h1>
   </div>
-  <div class="field">
-    <label for="firstname">First name:</label> 
-    <input id="firstname" placeholder="first name" formControlName="firstname"> 
-  </div>
-  <div class="field">
-    <label for="lastname">Last name:</label> 
-    <input id="lastname" placeholder="last name" formControlName="lastname">
-  </div>
-  <div class="field">
-    <label for="name">Username:</label> 
-    <input id="name" placeholder="example" formControlName="username">
-  </div>
-  <div class="field">
-    <label for="email">Email:</label> 
-    <input id="email" placeholder="example@example.com" formControlName="email">
-  </div>
-  <button type="submit" class="ui blue button" id="registerBttn">Register</button>
-</form>
-
-<!-- 
-<form class="ui large form segment" id="registerForm" #f='ngForm' (ngSubmit)='onSubmit()'>
-  <div class="field">
-    <h1 class="ui header" id="registerTitle">Register</h1>
-  </div>
-  <div class="field">
-    <label for="firstname">First name:</label> 
-    <input id="firstname" placeholder="first name" name="firstname" ngModel [(ngModel)]='user.firstname'> 
-  </div>
-  <div class="field">
-    <label for="lastname">Last name:</label> 
-    <input id="lastname" placeholder="last name" name="lastname" ngModel [(ngModel)]='user.lastname'>
-  </div>
-  <div class="field">
-    <label for="name">Username:</label> 
-    <input id="name" placeholder="example" name="name" ngModel [(ngModel)]='user.username' required minlength="4" #nameInput='ngModule'>
-    <div class="error" *ngIf="nameInput.errors && nameInput.touched">
-      Username is required and should contain at least 4 character
+  <div id="formContent">
+    <div class="field">
+      <label for="firstname">First name:</label> 
+      <input id="firstname" placeholder="first name" formControlName="firstname"> 
+      <div class="ui pointing label" *ngIf="firstname.invalid && firstname.dirty" id="error">
+          <div *ngIf="firstname.errors.required" >Firstname is required</div>
+          <div *ngIf="firstname.errors.pattern" >Should only exist of characters</div>
+      </div> 
     </div>
+    <div class="field">
+      <label for="lastname">Last name:</label> 
+      <input id="lastname" placeholder="last name" formControlName="lastname">
+      <div class="ui pointing label" *ngIf="lastname.invalid && lastname.dirty" id="error">
+          <div *ngIf="lastname.errors.required" >Lastname is required</div>
+          <div *ngIf="lastname.errors.pattern" >Should only exist of characters</div>
+      </div>
+    </div>
+    <div class="field">
+      <label for="name">Username:</label> 
+      <input id="name" placeholder="example" formControlName="username">
+      <div class="ui pointing label" *ngIf="username.invalid && username.dirty" id="error">
+          <div *ngIf="username.errors.required" >Username is required</div>
+          <div *ngIf="username.errors.pattern" >Should only exist of characters</div>
+      </div>
+    </div>
+    <div class="field">
+      <label for="email">Email:</label> 
+      <input id="email" placeholder="example@example.com" formControlName="email">
+      <div class="ui pointing label" *ngIf="email.invalid && email.dirty" id="error">
+          <div *ngIf="email.errors.required" >Email is required</div>
+          <div *ngIf="email.errors.pattern" >Should only exist of characters</div>
+      </div>
+    </div>
+    <button type="submit" class="ui blue button" id="registerBttn" [disabled]='!user.valid'>Register</button>
   </div>
-  <div class="field">
-    <label for="email">Email:</label> 
-    <input id="email" placeholder="example@example.com" name="email" ngModel [(ngModel)]='user.email'>
-  </div>
-  <button type="submit" class="ui blue button" id="registerBttn" [disabled]= '!f.valid'>Register</button>
-</form> 
--->
+</form>
 
 

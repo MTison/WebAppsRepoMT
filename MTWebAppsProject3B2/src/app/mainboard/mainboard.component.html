@@ -1,0 +1,20 @@
+<div class="ui three item menu" id="mainboardMenu">
+    <a class="item {{showCreateList}}" (click)="showCreateListBoard()">
+      Create new list
+    </a>
+    <a class="item {{showAllItems}}" (click)="showAllItemsBoard()">
+      All items
+    </a>
+    <a class="item {{showMyLists}}" (click)="showMyListsBoard()">
+      My personal lists
+    </a>
+</div>
+<div *ngIf="createList">
+  <app-createlist></app-createlist>
+</div>
+<div *ngIf="allItems">
+  <app-allitems></app-allitems>
+</div>
+<div *ngIf="myLists">
+  <app-mylists></app-mylists>
+</div>
