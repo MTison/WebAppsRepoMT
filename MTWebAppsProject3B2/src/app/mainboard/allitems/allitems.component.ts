@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./allitems.component.css']
 })
 export class AllitemsComponent implements OnInit {
+  items: string[] = [];
 
   constructor() { }
 
   ngOnInit() {
+    this.items.length = 0;
+    for(let i=0;i<=25;i++) {
+      this.items.push("value");
+    }
   }
 
 }

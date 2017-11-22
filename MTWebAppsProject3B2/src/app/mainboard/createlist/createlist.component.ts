@@ -14,7 +14,7 @@ export class CreatelistComponent implements OnInit {
   ngOnInit() {
     this.items.length = 0;
     for(let i=0;i<=25;i++) {
-      this.items.push("value1");
+      this.items.push("value");
     }
   }
 

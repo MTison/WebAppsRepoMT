@@ -11,9 +11,7 @@ let User = mongoose.model('User');
 
 router.get('/API/users/', (req,res,next) => {
   User.find((err,users) => { // callback function to handle errors and convert the users to JSON
-    if (err) { 
-      return next(err); // give the error to next middleware callback that can handle this
-    }
+    if (err) { return next(err); } // give the error to next middleware callback that can handle this
     res.json(users);
   })
 })
@@ -21,9 +19,7 @@ router.get('/API/users/', (req,res,next) => {
 router.post('/API/users/', (req,res,next) => {
   let user = new User(req.body);
   User.save((err,post) => { 
-    if (err) { 
-      return next(err); // give the error to next middleware callback that can handle this
-    }
+    if (err) { return next(err); } // give the error to next middleware callback that can handle this
     res.json(user);
   })
 })

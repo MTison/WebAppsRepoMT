@@ -15,7 +15,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/MTprojectdb', {
   useMongoClient: true
 });
-
+// to register schemas, making them accessible 
 require('./models/User');
 
 

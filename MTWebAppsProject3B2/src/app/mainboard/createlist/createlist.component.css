@@ -3,3 +3,32 @@
     margin: 2% 0 2% 10%;
 }
 
+.addButton {
+    height: 35px;
+    width: 100%;
+    outline: none;
+    color: rgb(77, 133, 49);
+    background-color: rgba(115, 248, 106, 0.548);
+    font-size: 20px;
+    border: none;
+}
+.addButton:hover {
+    color: rgb(77, 133, 49);
+    background-color: rgb(115, 248, 106);
+    cursor: pointer;
+}
+.addbuttonColumn {
+    padding: 0 0 0 0;
+    width: 8%;
+    height: 40px;
+}
+
+table tfoot tr th:first-child {
+    text-align: center;
+}
+
+#shopIcon {
+    font-size: 25px;
+    margin: 0 auto 0 auto;
+    width: 100%;
+}

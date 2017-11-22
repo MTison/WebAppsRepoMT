@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../models/user.model';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
@@ -13,7 +14,7 @@ export class RegisterComponent implements OnInit {
 
   @Output() public newUser = new EventEmitter();
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private router: Router,private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.user = this.formBuilder.group({
@@ -42,19 +43,7 @@ export class RegisterComponent implements OnInit {
     return this.user.get('email');
   }
 
-  /*
-  getUser() {
-    return this._user;
+  back() {
+    this.router.navigate(['/login'])
   }
-  onSubmit() {
-    this.newUser.emit(this._user);
-  }
-  */
-
-  /*
-  addUser(newUser : HTMLInputElement) :boolean {
-    this._user._firstname = newUser.value;
-    return false;
-  }
-  */
 }
