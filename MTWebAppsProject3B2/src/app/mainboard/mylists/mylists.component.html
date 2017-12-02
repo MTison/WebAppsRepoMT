@@ -1,3 +1,20 @@
-<p>
-  mylists works!
-</p>
+<div class="myListsContent">
+  <div class="ui card" *ngFor="let item of items; let i = index">
+    <div class="content">
+      <div class="header">
+        <i class="file text outline icon"></i> "MyList title"
+      </div>
+      <div class="description">
+        Short Description
+      </div>
+    </div>
+    <div class="ui two bottom attached buttons">
+      <div class="ui button">
+        Edit
+      </div>
+      <div class="ui button">
+        Delete
+      </div>
+    </div>
+  </div>
+</div>

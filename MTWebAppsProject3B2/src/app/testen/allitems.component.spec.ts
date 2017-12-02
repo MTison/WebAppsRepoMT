@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainboardComponent } from './mainboard.component';
+import { AllitemsComponent } from '../mainboard/allitems/allitems.component';
 
-describe('MainboardComponent', () => {
-  let component: MainboardComponent;
-  let fixture: ComponentFixture<MainboardComponent>;
+describe('AllitemsComponent', () => {
+  let component: AllitemsComponent;
+  let fixture: ComponentFixture<AllitemsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainboardComponent ]
+      declarations: [ AllitemsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainboardComponent);
+    fixture = TestBed.createComponent(AllitemsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

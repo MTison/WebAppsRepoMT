@@ -1,4 +1,25 @@
-#createListContent {
+#allItemsContent {
     width: 80%;
     margin: 2% 0 2% 10%;
+}
+
+.searchBox {
+    float: right;
+    outline: none;
+    height: 55px;
+    width: 25%;
+    border: none;
+    background-color: #f1f1f1;
+    color: #707070;
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+.ui.table thead th {
+    padding: 0;
+    height: 55px;
+}
+.ui.table thead th p {
+    margin: 2% 0 0 2%;
+    float: left;
 }
