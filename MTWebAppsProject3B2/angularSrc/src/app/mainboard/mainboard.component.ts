@@ -6,12 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mainboard.component.css']
 })
 export class MainboardComponent implements OnInit {
-  private showCreateList: string = "";
-  private createList: boolean = false;
-  private showAllItems: string = "";
-  private allItems: boolean = false;
-  private showMyLists: string = "";
-  private myLists: boolean = false;
+   showCreateList: string = "";
+   createList: boolean = false;
+   showAllItems: string = "";
+   allItems: boolean = false;
+   showMyLists: string = "";
+   myLists: boolean = false;
   
 
   constructor() { }
@@ -21,7 +21,7 @@ export class MainboardComponent implements OnInit {
     this.createList = true;
   }
 
-  private showCreateListBoard() {
+   showCreateListBoard() {
     this.showCreateList = "active";
     this.createList = true;
     this.showAllItems = "";
@@ -29,7 +29,7 @@ export class MainboardComponent implements OnInit {
     this.showMyLists = "";
     this.myLists = false;
   }
-  private showAllItemsBoard() {
+   showAllItemsBoard() {
     this.showAllItems = "active";
     this.allItems = true;
     this.showCreateList = "";
@@ -37,7 +37,7 @@ export class MainboardComponent implements OnInit {
     this.showMyLists = "";
     this.myLists = false;
   }
-  private showMyListsBoard() {
+   showMyListsBoard() {
     this.showMyLists = "active";
     this.myLists = true;
     this.showCreateList = "";

@@ -9,8 +9,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  private user: FormGroup;
-  private registeredUser: User;
+   user: FormGroup;
+   registeredUser: User;
 
   @Output() public newUser = new EventEmitter();
 
