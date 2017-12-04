@@ -4,14 +4,15 @@ var userService = require('../services/user.service');
 
 // routes
 router.post('/authenticate', authenticate);
-router.post('/register', register);
+router.post('/register', create);
 router.get('/', getAll);
-router.get('/current', getCurrent);
+router.get('/current/:_id', getById);
 router.put('/:_id', update);
 router.delete('/:_id', _delete);
+
 module.exports = router;
 
-function authenticate(req, res) {
+function authenticate(req /*request*/, res /*response*/) {
     userService.authenticate(req.body.email, req.body.password)
         .then(function (user) {
             if (user) {
@@ -27,7 +28,7 @@ function authenticate(req, res) {
         });
 }
 
-function register(req, res) {
+function create(req, res) {
     userService.create(req.body)
         .then(function () {
             res.sendStatus(200);
@@ -47,8 +48,8 @@ function getAll(req, res) {
         });
 }
 
-function getCurrent(req, res) {
-    userService.getById(req.user.sub)
+function getById(req, res) {
+    userService.getById(req.params._id)
         .then(function (user) {
             if (user) {
                 res.send(user);

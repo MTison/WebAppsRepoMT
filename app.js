@@ -10,7 +10,7 @@ var config = require("./config/database")
 var users = require('./controllers/user.controller');
 
 var app = express();
-var server = require('http').Server(app);
+var server = require('http').createServer(app);
 
 //importing the mongoose library and connect to db through right url
 var mongoose = require('mongoose');
@@ -18,7 +18,7 @@ mongoose.connect(config.database, {
   useMongoClient: true
 });
 
-// // to register schemas, making them accessible 
+//to register schemas, making them accessible 
 // require('./models/User');
 
 // uncomment after placing your favicon in /public
@@ -62,8 +62,8 @@ app.use(function(err, req, res, next) {
 });
 
 //Start server
-//const port = 4000;
-const port = process.env.PORT || 8080;
+const port = 4000;
+//const port = process.env.PORT || 8080;
 
 server.listen(port, () => {
   console.log(__dirname);

@@ -1,8 +1,17 @@
+<alert></alert>
 <form class="ui large form segment" id="registerForm" [formGroup]='user' (ngSubmit)='onSubmit()'>
   <div class="field">
     <h1 class="ui header" id="registerTitle">Register</h1>
   </div>
   <div id="formContent">
+      <div class="field">
+          <label for="name">Username:</label> 
+          <input id="name" placeholder="example" formControlName="username">
+          <div class="ui pointing label" *ngIf="username.invalid && username.dirty" id="error">
+              <div *ngIf="username.errors.required" >Username is required</div>
+              <div *ngIf="username.errors.pattern" >Should only exist of characters</div>
+          </div>
+        </div>
     <div class="field">
       <label for="firstname">First name:</label> 
       <input id="firstname" placeholder="first name" formControlName="firstname"> 
@@ -20,14 +29,6 @@
       </div>
     </div>
     <div class="field">
-      <label for="name">Username:</label> 
-      <input id="name" placeholder="example" formControlName="username">
-      <div class="ui pointing label" *ngIf="username.invalid && username.dirty" id="error">
-          <div *ngIf="username.errors.required" >Username is required</div>
-          <div *ngIf="username.errors.pattern" >Should only exist of characters</div>
-      </div>
-    </div>
-    <div class="field">
       <label for="email">Email:</label> 
       <input id="email" placeholder="example@example.com" formControlName="email">
       <div class="ui pointing label" *ngIf="email.invalid && email.dirty" id="error">
@@ -35,6 +36,14 @@
           <div *ngIf="email.errors.pattern" >Should only exist of characters</div>
       </div>
     </div>
+    <div class="field">
+        <label for="password">Password:</label> 
+        <input id="password" type="password" placeholder="../../../disc/Assets/Images/passwordIcon.png" formControlName="password">
+        <div class="ui pointing label" *ngIf="password.invalid && password.dirty" id="error">
+            <div *ngIf="password.errors.required" >Password is required</div>
+            <div *ngIf="password.errors.pattern" >Has unallowed characters</div>
+        </div>
+      </div>
     <button type="submit" class="ui blue button" id="registerBttn" [disabled]='!user.valid'>Register</button>
     <button class="ui button" id="backBttn" (click)="back()">Back</button>
   </div>

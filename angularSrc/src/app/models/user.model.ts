@@ -1,17 +1,19 @@
 
-
 export class User {
-    private _id : string;
-    private _username : string;
-    private _firstName: string;
-    private _lastName: string;
-    private _email: string;
+    _id: string;
+    _username: string;
+    _firstName: string;
+    _lastName: string;
+    _email: string;
+    _password: string;
 
-    constructor(_username: string,_firstName: string,_lastName: string,_email: string) {
+    constructor(_username: string, _firstName: string, _lastName: string, _email: string, _password: string, _id?: string) {
         this._username = _username;
         this._firstName = _firstName;
         this._lastName = _lastName;
         this._email = _email;
+        this._password = _password;
+        this._id = _id;
     }
 
     setUserName(username: string) {
@@ -26,14 +28,15 @@ export class User {
     setEmail(email: string) {
         this._email = email;
     }
-    
+
     toJSON() {
         return {
-            id : this._id,
-            username : this._username,
+            id: this._id,
+            username: this._username,
             firstname: this._firstName,
-            lastname : this._lastName,
-            email : this._email
+            lastname: this._lastName,
+            email: this._email,
+            password: this._password
         };
     }
 }

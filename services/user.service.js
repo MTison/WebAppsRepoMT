@@ -20,25 +20,25 @@ service.getByUsername = getByUsername;
 
 module.exports = service;
 
-function authenticate(email, password) {
+function authenticate(username, password) {
     var deferred = Q.defer();
 
-    db.users.findOne({ email: email }, function (err, user) {
+    db.users.findOne({ username: username }, function (err, user) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
-        if (user && bcrypt.compareSync(password, user.hash)) {
-            // authentication successful
+        if (user && bcrypt.compareSync(password, user.hash)/*verifying if the given password is correct for the current user*/) {
+            //authentication successful
             deferred.resolve({
                 _id: user._id,
-                username: user.username,
-                firstName: user.firstName,
-                lastName: user.lastName,
-                roles:user.roles,
+                _username: user._username,
+                _firstName: user._firstName,
+                _lastName: user._lastName,
+                _email: user._email,
                 token: 'JWT'+ jwt.sign(user, config.secret, {
                     expiresIn: 604800}) // 1 week {expiresIn:'20s'}) //error in de klassen jsonwebtoken/index.js:155:18
             });
         } else {
-            // authentication failed
+            //authentication failed
             deferred.resolve();
         }
     });
@@ -52,7 +52,7 @@ function getAll() {
     db.users.find().toArray(function (err, users) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
-        // return users (without hashed passwords)
+        //return users (without hashed passwords)
         users = _.map(users, function (user) {
             return _.omit(user, 'hash');
         });
@@ -67,13 +67,13 @@ function getById(_id) {
     var deferred = Q.defer();
 
     db.users.findById(_id, function (err, user) {
-        if (err) deferred.reject(err.name + ': ' + err.message);
+        if (err) { deferred.reject(err.name + ': ' + err.message); }
 
         if (user) {
-            // return user (without hashed password)
+            //return user (without hashed password)
             deferred.resolve(_.omit(user, 'hash'));
         } else {
-            // user not found
+            //user not found
             deferred.resolve();
         }
     });
@@ -85,7 +85,7 @@ function getByUsername(username) {
     var deferred = Q.defer();
 
     db.users.findOne({ username: username }, function (err, user) {
-        if (err) deferred.reject(err.name + ': ' + err.message);
+        if (err) { deferred.reject(err.name + ': ' + err.message); }
 
         if (user) {
             // return user (without hashed password)
@@ -106,10 +106,10 @@ function create(userParam) {
     db.users.findOne(
         { username: userParam.username },
         function (err, user) {
-            if (err) deferred.reject(err.name + ': ' + err.message);
+            if (err) { deferred.reject(err.name + ': ' + err.message); }
 
             if (user) {
-                // username already exists
+                //username already exists
                 deferred.reject('Username "' + userParam.username + '" is already taken');
             } else {
                 createUser();
@@ -142,14 +142,14 @@ function update(_id, userParam) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
         if (user.username !== userParam.username) {
-            // username has changed so check if the new username is already taken
+            //username has changed so check if the new username is already taken
             db.users.findOne(
                 { username: userParam.username },
                 function (err, user) {
-                    if (err) deferred.reject(err.name + ': ' + err.message);
+                    if (err) { deferred.reject(err.name + ': ' + err.message); }
 
                     if (user) {
-                        // username already exists
+                        //username already exists
                         deferred.reject('Username "' + req.body.username + '" is already taken')
                     } else {
                         updateUser();
@@ -161,14 +161,15 @@ function update(_id, userParam) {
     });
 
     function updateUser() {
-        // fields to update
+        //fields to update
         var set = {
-            firstName: userParam.firstName,
-            lastName: userParam.lastName,
-            username: userParam.username
+            _username: userParam._username,
+            _firstName: userParam._firstName,
+            _lastName: userParam._lastName,
+            _email: userParam._email,
         };
 
-        // update password if it was entered
+        //update password if it was entered and hash it
         if (userParam.password) {
             set.hash = bcrypt.hashSync(userParam.password, 10);
         }
@@ -177,8 +178,7 @@ function update(_id, userParam) {
             { _id: mongo.helper.toObjectID(_id) },
             { $set: set },
             function (err, doc) {
-                if (err) deferred.reject(err.name + ': ' + err.message);
-
+                if (err) { deferred.reject(err.name + ': ' + err.message); }
                 deferred.resolve();
             });
     }
@@ -192,9 +192,10 @@ function _delete(_id) {
     db.users.remove(
         { _id: mongo.helper.toObjectID(_id) },
         function (err) {
-            if (err) deferred.reject(err.name + ': ' + err.message);
-
+            if (err) { deferred.reject(err.name + ': ' + err.message); }
             deferred.resolve();
-        });
+        }
+    );
+
     return deferred.promise;
 }

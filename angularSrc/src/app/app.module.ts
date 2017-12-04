@@ -1,18 +1,22 @@
-import { AuthenticationService } from './services/authentication.service';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './/app-routing.module';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { AppRoutingModule } from './/app-routing.module';
 import { MainboardComponent } from './mainboard/mainboard.component';
 import { CreatelistComponent } from './mainboard/createlist/createlist.component';
 import { AllitemsComponent } from './mainboard/allitems/allitems.component';
 import { MylistsComponent } from './mainboard/mylists/mylists.component';
+import { AlertComponent } from './directives/alert.component';
+import { AlertService } from './services/alert.service';
+
+import { AuthenticationService } from './services/authentication.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,8 @@ import { MylistsComponent } from './mainboard/mylists/mylists.component';
     MainboardComponent,
     CreatelistComponent,
     AllitemsComponent,
-    MylistsComponent
+    MylistsComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +37,9 @@ import { MylistsComponent } from './mainboard/mylists/mylists.component';
     AppRoutingModule
   ],
   providers: [
-    AuthenticationService
+    AuthenticationService,
+    AlertService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

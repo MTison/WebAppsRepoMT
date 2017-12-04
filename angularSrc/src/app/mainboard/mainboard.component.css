@@ -1,5 +1,16 @@
 #mainboardMenu {
     position:fixed;
-    width: 100%;
+    width: 96%;
     height: 60px;
+    margin: 1.2% 0 0 0;
+}
+
+.navmenu {
+    position: fixed;
+    padding: 0 2% 0 2%;
+    margin: 0;
+    width: 100%;
+    height: 90px;
+    background-color: rgb(129, 129, 129);
+    border-bottom: 1.5px solid black;
 }

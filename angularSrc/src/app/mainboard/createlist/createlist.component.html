@@ -10,9 +10,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of items; let i = index">
+      <tr *ngFor="let item of rangeItems; let i = index">
         <td class="addbuttonColumn"><button class="addButton">+</button></td>
-        <td>{{item+(i+1)}}</td>
+        <td>{{item}}</td>
         <td></td>
         <td></td>
         <td></td>
@@ -29,4 +29,8 @@
       </tr>
     </tfoot>
   </table>
+</div>
+
+<div class="ui buttons">
+    <div class="ui button {{page==activePage? 'active': ''}}" *ngFor="let page of pages" (click)="setPage(page)">{{page}}</div>
 </div>

@@ -8,22 +8,23 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  username: {
-    type: String
-  },
-//   email: {
-//     type: String,
-//     required: true
-//   },
-  password: {
+  _username: {
     type: String,
     required: true
   },
-  firstName: {
+  _email: {
     type: String,
     required: true
   },
-  lastName: {
+  _password: {
+    type: String,
+    required: true
+  },
+  _firstName: {
+    type: String,
+    required: true
+  },
+  _lastName: {
     type: String,
     required: true
   },

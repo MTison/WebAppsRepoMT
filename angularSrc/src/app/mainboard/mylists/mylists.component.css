@@ -1,19 +1,27 @@
-.myListsContent {
+#pagecontent {
+    height: 651px;
+    margin-top: 2%;
+}
+
+.content {
     width: 100%;
-    display: flex;
-    flex-flow: wrap;
-    justify-content: space-around;
+}
+
+.ui.segment {
+    width: 80%;
+    height: 150px;
+    margin: 0 0 2% 10%;
     position:relative;
     z-index: -100;
 }
 
-.ui.card {
-    margin: 2% 0 2% 0;
-    height: 150px;
-    width: 28%;
+.ui.horizontal.header.divider {
+    position:relative;
+    z-index: -100;
 }
 
-.ui.card:hover {
-    cursor: pointer;
-    box-shadow: 10px 10px 5px #3d3d3d;;
+.ui.buttons {
+    margin-left: 10%;
 }
+
+
