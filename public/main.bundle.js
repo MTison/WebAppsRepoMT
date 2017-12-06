@@ -956,10 +956,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var AuthenticationService = (function () {
-    //inDevelopment: boolean = false;
     function AuthenticationService(http) {
         this.http = http;
-        this.inDevelopment = true;
+        //inDevelopment: boolean = true;
+        this.inDevelopment = false;
     }
     AuthenticationService.prototype.login = function (username, password) {
         return this.http.post(this.prepEndPoint("/users/authenticate"), { username: username, password: password }).map(function (response) {
@@ -1016,10 +1016,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var UserService = (function () {
-    //inDevelopment: boolean = false;
     function UserService(http) {
         this.http = http;
-        this.inDevelopment = true;
+        //inDevelopment: boolean = true;
+        this.inDevelopment = false;
     }
     UserService.prototype.create = function (user) {
         return this.http.post(this.prepEndPoint('/users/register'), user);

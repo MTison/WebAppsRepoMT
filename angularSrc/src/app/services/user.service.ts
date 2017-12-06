@@ -5,8 +5,8 @@ import { User } from '../models/user.model';
  
 @Injectable()
 export class UserService {
-    inDevelopment: boolean = true;
-    //inDevelopment: boolean = false;
+    //inDevelopment: boolean = true;
+    inDevelopment: boolean = false;
 
     constructor(private http: Http) { }
  
