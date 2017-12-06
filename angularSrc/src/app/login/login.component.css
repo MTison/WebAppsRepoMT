@@ -31,3 +31,10 @@
     background-color: rgba(255, 75, 75, 0.356);
 }
 
+#password {
+    background-image: url("../../../disc/Assets/Images/passwordIcon.png");
+	background-position: left;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+}
+

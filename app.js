@@ -26,6 +26,7 @@ mongoose.connect(config.database, {
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
 // app.use(cookieParser());
 
 require("./config/passport")(passport);
@@ -62,8 +63,8 @@ app.use(function(err, req, res, next) {
 });
 
 //Start server
-const port = 4000;
-//const port = process.env.PORT || 8080;
+//const port = 4000;
+const port = process.env.PORT || 8080;
 
 server.listen(port, () => {
   console.log(__dirname);

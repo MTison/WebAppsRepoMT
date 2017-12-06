@@ -29,11 +29,11 @@ function authenticate(username, password) {
         if (user && bcrypt.compareSync(password, user.hash)/*verifying if the given password is correct for the current user*/) {
             //authentication successful
             deferred.resolve({
-                _id: user._id,
-                _username: user._username,
-                _firstName: user._firstName,
-                _lastName: user._lastName,
-                _email: user._email,
+                id: user._id,
+                username: user._username,
+                firstName: user._firstName,
+                lastName: user._lastName,
+                email: user._email,
                 token: 'JWT'+ jwt.sign(user, config.secret, {
                     expiresIn: 604800}) // 1 week {expiresIn:'20s'}) //error in de klassen jsonwebtoken/index.js:155:18
             });
@@ -118,7 +118,7 @@ function create(userParam) {
 
     function createUser() {
         // set user object to userParam without the cleartext password
-        var user = _.omit(userParam, 'password','confirmPassword');
+        var user = _.omit(userParam, 'password');
         // add hashed password to user object
         user.hash = bcrypt.hashSync(userParam.password, 10);
 

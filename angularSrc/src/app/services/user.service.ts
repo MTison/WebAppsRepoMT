@@ -5,20 +5,33 @@ import { User } from '../models/user.model';
  
 @Injectable()
 export class UserService {
+    inDevelopment: boolean = true;
+    //inDevelopment: boolean = false;
 
     constructor(private http: Http) { }
  
     create(user: User) {
-        return this.http.post('/users/register', user);
+        return this.http.post(this.prepEndPoint('/users/register'), user);
     }
-    getUserById(_id: string){
-        return this.http.get('/users/current/' + _id,).map((response: Response) => response.json())
+    getAllUsers() {
+        return this.http.get(this.prepEndPoint('/users/')).map((response: Response) => response.json());
+    }
+    getUserById(_id: string) {
+        return this.http.get(this.prepEndPoint('/users/current/' + _id)).map((response: Response) => response.json())
             .map(user => new User(user._username,user._firstName,user._lastName,user._email,user._id));
     }
     update(user: User) {
-        return this.http.put('/users/' + user._id, user);
+        return this.http.put(this.prepEndPoint('/users/' + user._id), user);
     }
     delete(_id: string) {
-        return this.http.delete('/users/' + _id);
-    }   
+        return this.http.delete(this.prepEndPoint('/users/' + _id));
+    } 
+
+    prepEndPoint(endPoint) {
+        if(this.inDevelopment) {
+            return 'http://localhost:4000'+endPoint;
+        } else {
+            return 'https://mtwebappsproject.herokuapp.com'+endPoint;
+        }
+    }
 }

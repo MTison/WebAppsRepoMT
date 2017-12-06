@@ -1,52 +1,138 @@
 <alert></alert>
-<form class="ui large form segment" id="registerForm" [formGroup]='user' (ngSubmit)='onSubmit()'>
+<form class="ui large form segment" id="registerForm" #f='ngForm' (ngSubmit)='onSubmit()'>
   <div class="field">
     <h1 class="ui header" id="registerTitle">Register</h1>
   </div>
   <div id="formContent">
-      <div class="field">
-          <label for="name">Username:</label> 
-          <input id="name" placeholder="example" formControlName="username">
+    <div class="field">
+      <label for="name">Username:</label>
+      <input id="name" placeholder="example" name="username" [(ngModel)]='newUser.username' 
+        pattern="[a-zA-Z0-9]*" #username="ngModel">
+      <div class="ui pointing label" *ngIf="username.invalid && username.dirty" id="error">
+        <div *ngIf="username.errors.required">Username is required</div>
+        <div *ngIf="username.errors.pattern">Should only exist of characters</div>
+      </div>
+      <!-- <label for="name">Username:</label> 
+          <input id="name" placeholder="example" name="username" [(ngModel)]='newUser.username' 
+            required pattern="[a-zA-Z0-9]*" #username="ngModel">
           <div class="ui pointing label" *ngIf="username.invalid && username.dirty" id="error">
               <div *ngIf="username.errors.required" >Username is required</div>
               <div *ngIf="username.errors.pattern" >Should only exist of characters</div>
-          </div>
-        </div>
+          </div> -->
+    </div>
     <div class="field">
-      <label for="firstname">First name:</label> 
-      <input id="firstname" placeholder="first name" formControlName="firstname"> 
+      <label for="firstname">First name:</label>
+      <div class="ui corner labeled input">
+        <input id="firstname" placeholder="first name" name="firstname" [(ngModel)]='newUser.firstName' 
+          required pattern="[a-zA-Z.éèçùà-]*" #firstname="ngModel">
+        <div class="ui corner label">
+          <i class="asterisk icon"></i>
+        </div>
+      </div>
+      <div class="ui pointing label" *ngIf="firstname.invalid && firstname.dirty" id="error">
+        <div *ngIf="firstname.errors.required">Firstname is required</div>
+        <div *ngIf="firstname.errors.pattern">Should only exist of characters</div>
+      </div>
+      <!-- <label for="firstname">First name:</label> 
+      <input id="firstname" placeholder="first name" name="firstname" [(ngModel)]='newUser.firstName' 
+        required pattern="[a-zA-Z.éèçùà-]*" #firstname="ngModel"> 
       <div class="ui pointing label" *ngIf="firstname.invalid && firstname.dirty" id="error">
           <div *ngIf="firstname.errors.required" >Firstname is required</div>
           <div *ngIf="firstname.errors.pattern" >Should only exist of characters</div>
-      </div> 
+      </div>  -->
     </div>
     <div class="field">
-      <label for="lastname">Last name:</label> 
-      <input id="lastname" placeholder="last name" formControlName="lastname">
+      <label for="lastname">Last name:</label>
+      <div class="ui corner labeled input">
+        <input id="lastname" placeholder="last name" name="lastname" [(ngModel)]='newUser.lastName' 
+          required pattern="[a-zA-Z.éèçùà]*" #lastname="ngModel">
+        <div class="ui corner label">
+          <i class="asterisk icon"></i>
+        </div>
+      </div>
+      <div class="ui pointing label" *ngIf="lastname.invalid && lastname.dirty" id="error">
+        <div *ngIf="lastname.errors.required">Lastname is required</div>
+        <div *ngIf="lastname.errors.pattern">Should only exist of characters</div>
+      </div>
+      <!-- <label for="lastname">Last name:</label> 
+      <input id="lastname" placeholder="last name" name="lastname" [(ngModel)]='newUser.lastName' 
+        required pattern="[a-zA-Z.éèçùà]*" #lastname="ngModel">
       <div class="ui pointing label" *ngIf="lastname.invalid && lastname.dirty" id="error">
           <div *ngIf="lastname.errors.required" >Lastname is required</div>
           <div *ngIf="lastname.errors.pattern" >Should only exist of characters</div>
-      </div>
+      </div> -->
     </div>
     <div class="field">
-      <label for="email">Email:</label> 
-      <input id="email" placeholder="example@example.com" formControlName="email">
+      <label for="email">Email:</label>
+      <div class="ui corner labeled input">
+        <input id="email" placeholder="example@example.com" name="email" [(ngModel)]='newUser.email' 
+          required pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" #email="ngModel">
+        <div class="ui corner label">
+          <i class="asterisk icon"></i>
+        </div>
+      </div>
+      <div class="ui pointing label" *ngIf="email.invalid && email.dirty" id="error">
+        <div *ngIf="email.errors.required">Email is required</div>
+        <div *ngIf="email.errors.pattern">Not a conventional email adress</div>
+      </div>
+      <!-- <label for="email">Email:</label> 
+      <input id="email" placeholder="example@example.com" name="email" [(ngModel)]='newUser.email' 
+        required pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" #email="ngModel">
       <div class="ui pointing label" *ngIf="email.invalid && email.dirty" id="error">
           <div *ngIf="email.errors.required" >Email is required</div>
-          <div *ngIf="email.errors.pattern" >Should only exist of characters</div>
-      </div>
+          <div *ngIf="email.errors.pattern" >Not a conventional email adress</div>
+      </div> -->
     </div>
     <div class="field">
-        <label for="password">Password:</label> 
-        <input id="password" type="password" placeholder="../../../disc/Assets/Images/passwordIcon.png" formControlName="password">
+      <label for="password">Password:</label>
+      <div class="ui corner labeled input">
+        <input id="password" type="password" name="password" [(ngModel)]='newUser.password'
+          required pattern="[a-zA-Z0-9.éèçùà]*" #password="ngModel">
+        <div class="ui corner label">
+          <i class="asterisk icon"></i>
+        </div>
+      </div>
+      <div class="ui pointing label" *ngIf="password.invalid && password.dirty" id="error">
+        <div *ngIf="password.errors.required">Password is required</div>
+        <div *ngIf="password.errors.pattern">Has unallowed characters</div>
+      </div>
+      <!-- <label for="password">Password:</label> 
+        <input id="password" type="password" name="password" [(ngModel)]='newUser.password' 
+          required pattern="[a-zA-Z0-9.éèçùà]*" #password="ngModel">
         <div class="ui pointing label" *ngIf="password.invalid && password.dirty" id="error">
             <div *ngIf="password.errors.required" >Password is required</div>
             <div *ngIf="password.errors.pattern" >Has unallowed characters</div>
-        </div>
-      </div>
-    <button type="submit" class="ui blue button" id="registerBttn" [disabled]='!user.valid'>Register</button>
+        </div> -->
+    </div>
+    <button type="submit" class="ui blue button" id="registerBttn" [disabled]='!f.valid'>Register</button>
     <button class="ui button" id="backBttn" (click)="back()">Back</button>
   </div>
 </form>
 
-
+<div *ngIf="noUsername" class="choiceWindow">
+  <div class="ui raised segment">
+    <div class="field" id="questionandicondiv">
+      <div class="questiondiv">
+        <h2 id="firstUiHeader" class="ui header">We will use your firstname as username.</h2>
+      <h2 class="ui header">Is this OK?</h2>
+      </div>
+      <div class="icondiv">
+        <i class="group icon"></i>
+      </div>
+    </div>
+    <div class="field" id="choiceBttns">
+      <div id="bttnYes"  class="ui green left attached animated fade button" (click)="onSubmit(true)">
+        <div class="visible content">Yes</div>
+        <div class="hidden content">
+          <i class="checkmark icon"></i>
+        </div>
+      </div>
+      <div id="bttnNo" class="ui red right attached animated fade button" (click)="noUsername = false">
+        <div class="visible content">No</div>
+        <div class="hidden content">
+          <i class="remove icon"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

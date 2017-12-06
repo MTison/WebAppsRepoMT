@@ -8,11 +8,13 @@ import 'rxjs/add/operator/map'
 
 @Injectable()
 export class AuthenticationService {
+    inDevelopment: boolean = true;
+    //inDevelopment: boolean = false;
 
     constructor (private http: Http) { }
 
     login(username: string, password: string) {
-        return this.http.post("/users/authenticate",{username: username, password: password}).map((response: Response) => {
+        return this.http.post(this.prepEndPoint("/users/authenticate"), { username: username, password: password }).map((response: Response) => {
             let user = response.json();
             //if there is a user object from the response AND it has a jwt token,
             //we put the user data in the localstorage to keep the user logged in
@@ -24,6 +26,14 @@ export class AuthenticationService {
     }
 
     logout() {
-        localStorage.clear(); //clearing the storage to log the current user out
+        localStorage.removeItem("loggedUser"); //clearing the storage to log the current user out
+    }
+
+    prepEndPoint(endPoint) {
+        if(this.inDevelopment) {
+            return 'http://localhost:4000'+endPoint;
+        } else {
+            return 'https://mtwebappsproject.herokuapp.com'+endPoint;
+        }
     }
 }
