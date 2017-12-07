@@ -4,7 +4,7 @@ var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var Q = require('q');
 var mongo = require('mongoskin');
-var db = mongo.db(config.database, { native_parser: true });
+var db = mongo.db(config.connectionStringItems, { native_parser: true });
 
 db.bind('items');
 
@@ -19,23 +19,25 @@ service.delete = _delete;
 module.exports = service;
 
 function create(itemParam) {
+    console.log(itemParam);
     var deferred = Q.defer();
 
     // validation
     db.items.findOne(
-        { productName: itemParam._productName },
+        { productname: itemParam.productName, inShop: itemParam.inShop },
         function (err, item) {
             if (err) deferred.reject(err.name + ': ' + err.message);
 
             if (item) {
                 // item already exists
-                deferred.reject('Item "' + itemParam._productName + '" already exists');
+                deferred.reject('Item "' + itemParam.productName + '" already exists, within shop "' + itemParam.inShop + '"');
             } else {
                 createItem(itemParam);
             }
         });
 
     function createItem(itemParam) {
+        console.log(itemParam);
         db.items.insert(
             itemParam,
             function (err, doc) {
@@ -85,10 +87,10 @@ function update(_id, itemParam) {
     db.items.findById(_id, function (err, item) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
-        if (item._productName !== itemParam._productName) {
+        if (item.productName !== itemParam.productName) {
             // username has changed so check if the new username is already taken
             db.items.findOne(
-                { productName: itemParam._productName },
+                { productName: itemParam.productName },
                 function (err, item) {
                     if (err) deferred.reject(err.name + ': ' + err.message);
         
@@ -107,10 +109,10 @@ function update(_id, itemParam) {
     function updateItem() {
         //fields to update
         var set = {
-            _productName: itemParam._productName,
-            _mark: itemParam._mark,
-            _productKind: itemParam._productKind,
-            _inShops: itemParam._inShops,
+            productName: itemParam.productName,
+            mark: itemParam.mark,
+            productKind: itemParam.productKind,
+            inShop: itemParam.inShop,
         };
 
         db.items.update(

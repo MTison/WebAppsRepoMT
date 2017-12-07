@@ -1,26 +1,26 @@
 
 export class Item {
      _id: string;
-     _productName: string;
-     _mark: string;
-     _productKind: string;
-     _inShops: string[] = [];
+     productname: string;
+     mark: string;
+     kind: string;
+     inShop: string;
 
-    constructor (productName: string,mark: string,productKind: string,inShops: string[],id?: string) {
-        this._productName = productName;
-        this._mark = mark;
-        this._productKind = productKind;
-        this._inShops = inShops;
-        this._id = id;
+    constructor (productName: string,mark: string,kind: string,inShop: string,_id?: string) {
+        this.productname = productName;
+        this.mark = mark;
+        this.kind = kind;
+        this.inShop = inShop;
+        this._id = _id;
     }
 
     toJSON() {
         return {
             id : this._id,
-            productname : this._productName,
-            mark: this._mark,
-            productkind : this._productKind,
-            inshops : this._inShops
+            productname : this.productname,
+            mark: this.mark,
+            productkind : this.kind,
+            shop : this.inShop
         };
     }
 }

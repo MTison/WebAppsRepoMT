@@ -13,10 +13,18 @@ import { CreatelistComponent } from './mainboard/createlist/createlist.component
 import { AllitemsComponent } from './mainboard/allitems/allitems.component';
 import { MylistsComponent } from './mainboard/mylists/mylists.component';
 import { AlertComponent } from './directives/alert.component';
-import { AlertService } from './services/alert.service';
 
+import { AlertService } from './services/alert.service';
 import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
+import { AdminboardComponent } from './adminboard/adminboard.component';
+import { AdditemComponent } from './adminboard/additem/additem.component';
+import { AllusersComponent } from './adminboard/allusers/allusers.component';
+import { ItemService } from './services/item.service';
+import { ItemListService } from './services/itemList.service';
+
+import { AuthGuard } from './_guards/auth.guard';
+import { NgxPermissionsModule } from 'ngx-permissions';
 
 @NgModule({
   declarations: [
@@ -27,19 +35,26 @@ import { UserService } from './services/user.service';
     CreatelistComponent,
     AllitemsComponent,
     MylistsComponent,
-    AlertComponent
+    AlertComponent,
+    AdminboardComponent,
+    AdditemComponent,
+    AllusersComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxPermissionsModule.forRoot(),
   ],
   providers: [
     AuthenticationService,
     AlertService,
-    UserService
+    UserService,
+    ItemService,
+    ItemListService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

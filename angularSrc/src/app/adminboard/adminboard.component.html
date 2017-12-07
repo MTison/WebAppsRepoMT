@@ -1,0 +1,28 @@
+<div class="header"><label><strong>ADMIN page</strong></label></div>
+<div class="navmenu">
+  <div class="ui vertical demo menu">
+    <a class="item {{showAddItem}}" (click)="showAddItemBoard()">
+        Add item
+    </a>
+    <a class="item {{showAllUsers}}" (click)="showAllUsersBoard()">
+        All users
+    </a>
+    <!-- <a class="item {{showMyLists}}" (click)="showMyListsBoard()">
+        My personal lists
+    <div class="ui label">1</div>
+    </a> -->
+  </div>
+  <div [routerLink]="['/login']" class="logout">
+    <a>Afmelden</a>
+  </div>
+</div>
+
+<div *ngIf="addItem">
+  <app-additem></app-additem>
+</div>
+<div *ngIf="allUsers">
+  <app-allusers></app-allusers>
+</div>
+<!-- <div *ngIf="myLists">
+  <app-mylists></app-mylists>
+</div> -->

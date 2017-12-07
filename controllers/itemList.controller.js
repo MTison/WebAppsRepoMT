@@ -1,4 +1,3 @@
-import { getAllDebugNodes } from '@angular/core/src/debug/debug_node';
 var express = require('express');
 var router = express.Router();
 var itemListService = require('../services/itemList.service');
@@ -24,9 +23,9 @@ function create(req,res) {
 function getAll(req,res) {
     itemListService.getAll()
         .then(function(itemlists) {
-            res.send(items);
-        }).catch(function() {
-            
+            res.send(itemlists);
+        }).catch(function(err) {
+            res.status(400).send(err);
         });
 }
 

@@ -1,6 +1,6 @@
 #pagecontent {
-    height: 651px;
-    margin-top: 2%;
+    height: 650px;
+    margin: 2% 0 0 200px;
 }
 
 .content {
@@ -11,17 +11,39 @@
     width: 80%;
     height: 150px;
     margin: 0 0 2% 10%;
-    position:relative;
-    z-index: -100;
 }
 
 .ui.horizontal.header.divider {
-    position:relative;
+    margin: 0 20% 20px 20%;
     z-index: -100;
 }
 
 .ui.buttons {
-    margin-left: 10%;
+    margin-left: 300px;
+}
+
+.ui.top.left.attached.label:hover {
+    cursor: pointer;
+    background-color: rgb(194, 194, 194);
+}
+.ui.bottom.left.attached.label {
+    text-align: center;
+    background-color: rgb(197, 64, 64);
+    width: 46px;
+}
+.ui.bottom.left.attached.label:hover {
+    cursor: pointer;
+    background-color: rgba(235, 114, 114, 0.801);
+    text-align: center;
+}
+
+.trash.icon {
+    margin: 0;
+    color: white;
+}
+
+.ui.divided.very.relaxed.animated.list {
+    margin: 0 0 0 20px;
 }
 
 

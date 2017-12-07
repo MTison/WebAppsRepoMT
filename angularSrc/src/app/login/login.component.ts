@@ -11,9 +11,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  adminLogin: boolean = false;
   user: any = {};
   
   allUsers: User[] = [];
+  returnUrl: string;
   previousUrl: string;
   
 
@@ -29,12 +31,13 @@ export class LoginComponent implements OnInit {
 
     console.log(localStorage.getItem("userCount"));
     this.userService.getAllUsers().subscribe(
-      data => {
-        if(data.length > parseInt(localStorage.getItem("userCount"))) {
-          this.alertService.success("You are registerd as "+data[parseInt(localStorage.getItem("userCount"))].username);
+      users => {
+        if(users.length > parseInt(localStorage.getItem("userCount"))) {
+          this.alertService.success("You are registerd as "+users[parseInt(localStorage.getItem("userCount"))].username);
         }
-        localStorage.setItem("userCount",data.length.toString());
+        localStorage.setItem("userCount",users.length.toString());
         console.log(localStorage.getItem("userCount"));
+        this.allUsers = users;
       },
       error => {
         this.alertService.error(error);
@@ -43,15 +46,31 @@ export class LoginComponent implements OnInit {
 
     //when the logincomponent is loaded we clear the localstorage of the user that was logged in before
     this.authService.logout();
+    
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    if(this.returnUrl == "/")
+      this.returnUrl = '/mainboard';
   }
 
-  login() {
+  login(asUser?) {
     this.authService.login(this.user.username,this.user.password)
       //we have to subscribe because it's an observable, we subscribe so we can do something with the observable data
       .subscribe(
         data => {
-          //if there is data we navigate to the mainboard with the user logged in
-          this.router.navigate(['/mainboard']);
+          let user = this.allUsers.find(user => user._id === data._id);
+          if (user.role == "ADMIN") {
+            console.log("aaa");
+            this.adminLogin = true;
+            if (asUser) {
+              this.router.navigate(['/adminboard']);
+            } else if (asUser == false) {
+              this.adminLogin = false;
+              this.router.navigate([this.returnUrl]);
+            }
+          } else {
+            //if there is data we navigate to the mainboard with the user logged in
+            this.router.navigate([this.returnUrl]);
+          }
         },
         error => {
           //implementation alertService

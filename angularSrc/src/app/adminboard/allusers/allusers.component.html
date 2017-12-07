@@ -1,0 +1,22 @@
+<alert></alert>
+<div class="allUsersContent">
+    <table class="ui celled striped table">
+      <thead>
+        <tr>
+          <th colspan="5">
+            <p>USERS</p>
+            <input type="text" placeholder="search" class="searchBox" #searchValue (input)="filterUsers(searchValue.value)"/>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of searchUsers">
+          <td>{{user.firstName}}</td>
+          <td>{{user.lastName}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.username}}</td>
+          <td class="removeUser"  (click)="deleteUser(user._id)"><div class="removeIcon"></div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

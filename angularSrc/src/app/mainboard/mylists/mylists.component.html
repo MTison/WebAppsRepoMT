@@ -1,13 +1,48 @@
 <div id="pagecontent">
   <div class="listcontent" *ngFor="let item of rangeItems; let i = index">
-  <h5 class="ui horizontal header divider">
-    {{item}}
-  </h5>
-  <div class="ui segment">
-    <a class="ui ribbon label">Ribbon</a>
+    <h5 class="ui horizontal header divider">
+      {{item.listname}}
+    </h5>
+    <div *ngIf="!loading" class="ui segment">
+      <div class="ui top left attached label">Edit</div>
+      <div class="ui bottom left attached label">
+        <i class="trash icon"></i>
+      </div>
+      <div class="ui divided very relaxed animated list" *ngFor="let item of geefAllListItems(item._id)">
+        <div class="item">
+          <div class="ui top aligned avatar image">
+            <i class="list icon"></i>
+          </div>
+          <div class="content">
+            <div class="header">Header</div>
+            Description
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="loading" class="ui segment">
+      <div class="ui active inverted dimmer">
+        <div class="ui indeterminate text active loader">
+          Preparing...
+        </div>
+      </div>
+      <br><br>
+      <br><br>
+      <br><br>
+    </div>
   </div>
 </div>
-</div>
 <div class="ui buttons">
-    <div class="ui button {{page==activePage? 'active': ''}}" *ngFor="let page of pages" (click)="setPage(page)">{{page}}</div>
+  <div class="ui button {{page==activePage? 'active': ''}}" *ngFor="let page of pages" (click)="setPage(page)">{{page}}</div>
 </div>
+<!-- 
+<div class="ui divided very relaxed animated list">
+    <div class="item">
+      <div class="ui top aligned avatar image">
+        <img src="/images/wireframe/square-image.png">
+      </div>
+      <div class="content">
+        <div class="header">Header</div>
+        Description
+      </div>
+    </div> -->

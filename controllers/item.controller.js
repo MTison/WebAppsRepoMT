@@ -1,4 +1,4 @@
-import { getAllDebugNodes } from '@angular/core/src/debug/debug_node';
+var config = require('../config/database')
 var express = require('express');
 var router = express.Router();
 var itemService = require('../services/item.service');

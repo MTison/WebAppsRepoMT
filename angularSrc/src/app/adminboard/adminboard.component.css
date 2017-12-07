@@ -1,0 +1,51 @@
+.header {
+    height:60px;
+    text-align: left;
+    position:relative;
+    padding-top: 15px;
+    background-color: white;
+    border-bottom: 1px solid #353534;
+}
+.header label {
+    text-align: center;
+    font-size: 30px;
+    margin: 0 0 0 10px;
+    color: rgb(29, 28, 28);
+}
+
+.navmenu {
+    position: fixed;
+    z-index: 100;
+    padding: 0;
+    margin: 0;
+    width: 200px;
+    height: 100%;
+    background-color: rgb(247, 245, 245);
+    border-right: 1px solid #353534;
+}
+
+.ui.vertical.demo.menu {
+    width: 100%;
+    border-radius: 0;
+    box-shadow: white;
+}
+
+.logout {
+    outline: none;
+    background-color: rgb(212, 211, 211);
+    border-top: 2px solid rgba(88, 88, 88, 0.144);
+    border-right: 1px solid #353534;
+    text-align: center;
+    height: 35px;
+    width: 200px;
+    bottom: 0px; 
+}
+.logout:hover {
+    background-color: rgb(197, 197, 197);
+    cursor: pointer;
+}
+.logout a{
+    line-height: 35px;
+    color: white;
+    text-decoration: none; 
+}

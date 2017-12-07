@@ -4,25 +4,27 @@ import { User } from "./user.model";
 
 export class ItemList {
      _id: string;
-     _listName: string;
-     _items: Item[] = [];
-     _user: User;
-     _itemIds: string[] = [];
-     _userId: string;
+     listname: string;
+     items: Item[] = [];
+     user: User;
+     itemIds: string[] = [];
+     userId: string;
 
-    constructor(listName: string,itemIds: string[],userId: string,id?: string) {
-        this._listName = listName;
-        this._itemIds = itemIds;
-        this._userId = userId;
+    constructor(listname: string,itemIds: string[],userId: string,id?: string) {
+        this.listname = listname;
+        this.itemIds = itemIds;
+        this.userId = userId;
         this._id = id;
     }
 
     toJSON() {
         return {
             id: this._id,
-            listName: this._listName,
-            items: this._items,
-            user: this._user
+            listname: this.listname,
+            items: this.items,
+            user: this.user,
+            itemIds: this.itemIds,
+            userId: this.userId,
         };
     }
 }

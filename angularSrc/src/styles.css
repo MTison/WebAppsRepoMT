@@ -7,15 +7,15 @@ html{
 body {
     color: black;
     background-image: -webkit-radial-gradient(center center, circle cover,
-     rgb(247, 251, 252) 0%, rgb(170, 170, 170) 100%);
+     rgb(247, 251, 252) 0%, rgb(240, 240, 240) 100%);
 }
 
 .alert {
     left: 0;
     right: 0;
     z-index: 1000;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border: 1px solid transparent;
     text-align: center;
 }
@@ -27,9 +27,18 @@ body {
     color: inherit;
 }
 
-.alert .close.icon:hover {
+.alert i {
+    height: auto;
+}
+
+.alert .close.icon.succes:hover {
     cursor: pointer;
-} 
+    background-color: #b8d1ad;
+}
+.alert .close.icon.error:hover {
+    cursor: pointer;
+    background-color: #d8a7a7;
+}
 
 .alert-success {
     color: rgba(60, 118, 61, 0.73);

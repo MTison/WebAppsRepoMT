@@ -25,3 +25,30 @@
     <button class="ui blue button" id="registerBttn" (click)="register()">Register</button>
   </div>
 </form>
+
+<div *ngIf="adminLogin" class="choiceWindow">
+    <div class="ui raised segment">
+      <div class="field" id="questionandicondiv">
+        <div class="questiondiv">
+          <h2 class="ui header">Do you want to log in as ADMIN?</h2>
+        </div>
+        <div class="icondiv">
+          <i class="group icon"></i>
+        </div>
+      </div>
+      <div class="field" id="choiceBttns">
+        <div id="bttnYes"  class="ui green left attached animated fade button" (click)="login(true)">
+          <div class="visible content">Yes</div>
+          <div class="hidden content">
+            <i class="checkmark icon"></i>
+          </div>
+        </div>
+        <div id="bttnNo" class="ui red right attached animated fade button" (click)="login(false)">
+          <div class="visible content">No</div>
+          <div class="hidden content">
+            <i class="remove icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

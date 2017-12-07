@@ -8,8 +8,8 @@ import 'rxjs/add/operator/map'
 
 @Injectable()
 export class AuthenticationService {
-    //inDevelopment: boolean = true;
-    inDevelopment: boolean = false;
+    inDevelopment: boolean = true;
+    //inDevelopment: boolean = false;
 
     constructor (private http: Http) { }
 

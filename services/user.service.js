@@ -29,11 +29,12 @@ function authenticate(username, password) {
         if (user && bcrypt.compareSync(password, user.hash)/*verifying if the given password is correct for the current user*/) {
             //authentication successful
             deferred.resolve({
-                id: user._id,
-                username: user._username,
-                firstName: user._firstName,
-                lastName: user._lastName,
-                email: user._email,
+                _id: user._id,
+                username: user.username,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                role: user.role,
                 token: 'JWT'+ jwt.sign(user, config.secret, {
                     expiresIn: 604800}) // 1 week {expiresIn:'20s'}) //error in de klassen jsonwebtoken/index.js:155:18
             });
@@ -121,7 +122,7 @@ function create(userParam) {
         var user = _.omit(userParam, 'password');
         // add hashed password to user object
         user.hash = bcrypt.hashSync(userParam.password, 10);
-
+        
         db.users.insert(
             user,
             function (err, doc) {
@@ -163,10 +164,11 @@ function update(_id, userParam) {
     function updateUser() {
         //fields to update
         var set = {
-            _username: userParam._username,
-            _firstName: userParam._firstName,
-            _lastName: userParam._lastName,
-            _email: userParam._email,
+            username: userParam.username,
+            firstName: userParam.firstName,
+            lastName: userParam.lastName,
+            email: userParam.email,
+            roles: user.role,
         };
 
         //update password if it was entered and hash it

@@ -8,6 +8,8 @@ var passport = require("passport");
 var config = require("./config/database")
 
 var users = require('./controllers/user.controller');
+var items = require('./controllers/item.controller');
+var itemlists = require('./controllers/itemList.controller');
 
 var app = express();
 var server = require('http').createServer(app);
@@ -35,6 +37,8 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', users);
+app.use('/items', items);
+app.use('/itemlists', itemlists);
 
 // Index Route
 app.get('/', (req, res) => {
@@ -63,8 +67,8 @@ app.use(function(err, req, res, next) {
 });
 
 //Start server
-//const port = 4000;
-const port = process.env.PORT || 8080;
+const port = 4000;
+//const port = process.env.PORT || 8080;
 
 server.listen(port, () => {
   console.log(__dirname);

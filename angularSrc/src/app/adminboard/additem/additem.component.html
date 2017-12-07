@@ -1,0 +1,59 @@
+<alert></alert>
+<form class="ui large form segment" id="registerForm" #f='ngForm' (ngSubmit)='addItem()'>
+  <div class="field">
+    <h1 class="ui header" id="registerTitle">Add item</h1>
+  </div>
+  <div id="formContent">
+    <div class="field">
+      <label for="productname">Product name:</label>
+      <div class="ui corner labeled input">
+        <input id="name" placeholder="product" name="productname" [(ngModel)]='newItem.productname'
+         required pattern="[a-zA-Z .éèçùà-]*" #productname="ngModel">
+        <div class="ui corner label">
+          <i class="asterisk icon"></i>
+        </div>
+      </div>
+      <div class="ui pointing label" *ngIf="productname.invalid && productname.dirty" id="error">
+        <div *ngIf="productname.errors.required">Name for product is required</div>
+        <div *ngIf="productname.errors.pattern">Should only exist of characters</div>
+      </div>
+    </div>
+    <div class="field">
+      <label for="mark">Mark:</label>
+      <div class="ui corner labeled input">
+        <input id="firstname" placeholder="mark" name="mark" [(ngModel)]='newItem.mark' 
+          required pattern="[a-zA-Z .éèçùà-]*" #mark="ngModel">
+        <div class="ui corner label">
+          <i class="asterisk icon"></i>
+        </div>
+      </div>
+      <div class="ui pointing label" *ngIf="mark.invalid && mark.dirty" id="error">
+        <div *ngIf="mark.errors.required">Mark is required</div>
+        <div *ngIf="mark.errors.pattern">Should only exist of characters</div>
+      </div>
+    </div>
+    <div class="field">
+      <label for="kind">Kind:</label>
+      <select size="7" name="kind" id="kind" [(ngModel)]="newItem.kind" required #kind="ngModel">
+        <option>Meats</option>
+        <option>Dairy</option>
+        <option>Fruits</option>
+        <option>Vegetables</option>
+        <option>Drinks</option>
+        <option>Frozen goods</option>
+        <option>Non-food</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="inShop">Buy at:</label>
+      <select name="inShop" id="inShop" [(ngModel)]="newItem.inShop" required #inShop="ngModel">
+        <option value='' disabled selected>Choose shop</option>
+        <option>Delhaize</option>
+        <option>Carrefour</option>
+        <option>Colruyt</option>
+        <option>Albert hein</option>
+      </select>
+    </div>
+    <button type="submit" class="ui blue button" id="registerBttn" [disabled]='!f.valid'>Add Item</button>
+  </div>
+</form>

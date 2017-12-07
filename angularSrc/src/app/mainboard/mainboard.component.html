@@ -1,19 +1,26 @@
+<div class="header"><div class="logo"></div></div>
 <div class="navmenu">
-  <div class="ui three item menu" id="mainboardMenu">
+  <div class="ui vertical demo menu">
     <a class="item {{showCreateList}}" (click)="showCreateListBoard()">
-      Create new list
+        Create new list
+    </a>
+    <!-- <a class="item" (click)="showAllItemsBoard()">
+        List
+      <div class="ui label">0</div>
+    </a> -->
+    <a class="item {{showMyLists}}" (click)="showMyListsBoard()">
+        My personal lists
+      <div class="ui label">1</div>
     </a>
     <a class="item {{showAllItems}}" (click)="showAllItemsBoard()">
-      All items
+        All items
     </a>
-    <a class="item {{showMyLists}}" (click)="showMyListsBoard()">
-      My personal lists
-      <div class="floating ui teal label">2</div>
-    </a>
+  </div>
+  <div [routerLink]="['/login']" class="logout">
+    <a>Afmelden</a>
   </div>
 </div>
 
-<div style="height:95px;position:relative;z-index: -100;"></div>
 <div *ngIf="createList">
   <app-createlist></app-createlist>
 </div>

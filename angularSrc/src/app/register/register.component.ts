@@ -24,7 +24,8 @@ export class RegisterComponent implements OnInit {
       this.noUsername = true;
       if (useDefault) {
         this.newUser.username = this.newUser.firstName;
-
+        this.newUser.role = "USER";
+        
         this.userService.create(this.newUser).subscribe(
           data => {
             this.router.navigate(["/login"]);
@@ -35,6 +36,7 @@ export class RegisterComponent implements OnInit {
         );
       }
     } else {
+      this.newUser.role = "USER";
       //creating a new user trough the userService and the model that was filled trough html (newUser)
       this.userService.create(this.newUser).subscribe(
         data => {

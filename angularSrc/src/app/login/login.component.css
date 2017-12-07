@@ -38,3 +38,61 @@
     padding-left: 40px;
 }
 
+.choiceWindow {
+    top: 0;
+    left: 0;
+    z-index: 200;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.747);
+}
+.ui.raised.segment {
+    position: relative;
+    margin-top: 15%;
+    border-radius: 5px;
+    height: 200px;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#questionandicondiv {
+    margin: 2% 0 15px 10%;
+    width: 80%;
+    height: 80px;
+}
+.questiondiv {
+    float: left;
+    width: 80%;
+}
+.icondiv {
+    margin-top: 5%;
+    float: left;
+}
+
+.ui.header {
+    text-align: center;
+    margin-bottom: 1%;
+    margin-top: 0;
+}
+
+.group.icon {
+    height: auto;
+    font-size: 50px;
+}
+
+#choiceBttns {
+    position: relative;
+    margin: 0 0 0 10%;
+    width: 80%;
+}
+#bttnYes {
+    text-align: center;
+    width: 48%;
+}
+#bttnNo {
+    text-align: center;
+    width: 48%;
+}
+

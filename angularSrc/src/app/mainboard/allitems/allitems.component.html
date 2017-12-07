@@ -3,16 +3,16 @@
     <thead>
       <tr>
         <th colspan="3">
-          <p>KIND OF ITEM</p>
-          <input type="text" placeholder="search" class="searchBox"/>
+          <p>ALL ITEMS</p>
+          <input type="text" placeholder="search" class="searchBox" #searchValue (input)="filterItems(searchValue.value)"/>
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of allItems; let i = index">
-        <td>{{item._productName}}</td>
-        <td>{{item._mark}}</td>
-        <td class="right aligned collapsing">{{item._productKind}}</td>
+      <tr *ngFor="let item of searchItems; let i = index">
+        <td>{{item.productname}}</td>
+        <td>{{item.mark}}</td>
+        <td class="right aligned collapsing">{{item.kind}}</td>
       </tr>
     </tbody>
   </table>

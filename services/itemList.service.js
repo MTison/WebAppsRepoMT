@@ -1,10 +1,7 @@
 var config = require('../config/database');
-var _ = require('lodash');
-var jwt = require('jsonwebtoken');
-var bcrypt = require('bcryptjs');
 var Q = require('q');
 var mongo = require('mongoskin');
-var db = mongo.db(config.database, { native_parser: true });
+var db = mongo.db(config.connectionStringItemlists, { native_parser: true });
 
 db.bind('itemlists');
 
@@ -20,16 +17,16 @@ module.exports = service;
 
 function create(itemListParam) {
     var deferred = Q.defer();
-
+    console.log(itemListParam);
     // validation
     db.itemlists.findOne(
-        { listName : itemListParam._listName },
+        { listname : itemListParam.listname },
         function (err, itemList) {
             if (err) deferred.reject(err.name + ': ' + err.message);
 
             if (itemList) {
                 //itemlist already exists
-                deferred.reject('Itemlist "' + itemListParam._listName + '" already exists');
+                deferred.reject('Itemlist "' + itemListParam.listname + '" already exists');
             } else {
                 createItem(itemListParam);
             }
@@ -85,10 +82,10 @@ function update(_id, itemlistParam) {
     db.itemlists.findById(_id, function (err, itemlist) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
-        if (itemlist._listName !== itemlistParam._listName) {
+        if (itemlist.listname !== itemlistParam.listname) {
             //listname has changed so check if the new listname is already taken
             db.itemlists.findOne(
-                { _listName: itemlistParam._listName },
+                { listname: itemlistParam.listname },
                 function (err, itemlist) {
                     if (err) deferred.reject(err.name + ': ' + err.message);
         
@@ -107,11 +104,11 @@ function update(_id, itemlistParam) {
     function updateItemList() {
         //fields to update
         var set = {
-            _listName: itemlistParam._listName,
-            _items: itemlistParam._items,
-            _user: itemlistParam._user,
-            _itemIds: itemlistParam._itemIds,
-            _userId: itemlistParam._userId
+            listName: itemlistParam.listname,
+            items: itemlistParam.items,
+            user: itemlistParam.user,
+            itemIds: itemlistParam.itemIds,
+            userId: itemlistParam.userId
         };
 
         db.itemlists.update(
