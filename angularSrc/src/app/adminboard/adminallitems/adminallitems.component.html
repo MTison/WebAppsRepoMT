@@ -1,0 +1,24 @@
+<alert></alert>
+<div class="allItemsContent">
+  <table class="ui celled striped table">
+    <thead>
+      <tr>
+        <th colspan="5">
+          <p>ITEMS</p>
+          <input type="text" placeholder="search" class="searchBox" #searchValue (input)="filterItems(searchValue.value)" />
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of searchItems">
+        <td>{{item.productname}}</td>
+        <td>{{item.mark}}</td>
+        <td>{{item.kind}}</td>
+        <td>{{item.inShop}}</td>
+        <td class="removeItem" (click)="deleteItem(item._id)">
+          <div class="removeIcon"></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

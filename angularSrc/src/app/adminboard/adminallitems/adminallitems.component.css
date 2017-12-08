@@ -1,0 +1,51 @@
+.allItemsContent {
+    width: 70%;
+    margin: 4% 0 0 300px;
+    height: 630px;
+}
+
+.searchBox {
+    float: right;
+    outline: none;
+    height: 55px;
+    width: 25%;
+    border: none;
+    background-color: #f1f1f1;
+    color: #707070;
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+.ui.table thead th {
+    padding: 0;
+    height: 55px;
+}
+.ui.table thead th p {
+    margin: 2% 0 0 2%;
+    float: left;
+}
+
+.ui.table tbody tr {
+    height: 45px;
+}
+
+.removeItem {
+    background-color: rgb(224, 104, 104);
+    width: 5%;
+    padding: 0;
+}
+.ui.table tbody tr td:last-child {
+   padding: 1px 0 0 0;
+}
+.ui.table tbody tr td:last-child:hover {
+    background-color: rgba(235, 108, 108, 0.788);
+    cursor: pointer;
+ }
+
+.removeIcon {
+    background-image: url("../../../../disc/Assets/Images/trashcanicon.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 42px;
+    width: 100%;
+}

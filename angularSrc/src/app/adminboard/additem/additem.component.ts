@@ -22,11 +22,10 @@ export class AdditemComponent implements OnInit {
     console.log(this.newItem);
     this.itemService.create(this.newItem).subscribe(
       data => {
-        this.alertService.success("Item was created");
-        this.newItem = {
-          "kind" : "",
-          "inShop" : "",
-        };
+        this.alertService.success("Item was created")
+        setTimeout(() => {
+          location.reload();
+        },1500)
       }
     );
   }

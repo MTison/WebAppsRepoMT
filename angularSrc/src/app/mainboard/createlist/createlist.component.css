@@ -1,7 +1,7 @@
 #createListContent {
     width: 70%;
     margin: 3% 0 0 300px;
-    height: 636px;
+    height: 625px;
 }
 
 .ui.compact.celled.definition.table {
@@ -49,4 +49,73 @@ table tfoot tr th:first-child {
 
 .ui.buttons {
     margin-left: 300px;
+}
+
+.choiceWindow {
+    top: 0;
+    left: 0;
+    z-index: 200;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.747);
+}
+.ui.raised.segment {
+    position: relative;
+    margin-top: 15%;
+    border-radius: 5px;
+    height: 200px;
+    width: 33%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.close.icon {
+    height: auto;
+}
+.close.icon:hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+#questionandicondiv {
+    margin: 2% 0 10px 17%;
+    width: 80%;
+    height: 80px;
+}
+.questiondiv {
+    float: left;
+    width: 70%;
+}
+.icondiv {
+    margin-top: 5%;
+    float: left;
+}
+
+.ui.header {
+    text-align: center;
+    margin-bottom: 1%;
+    margin-top: 0;
+}
+
+.help.icon {
+    height: auto;
+    font-size: 42px;
+}
+
+#listnameSave {
+    padding-left: 20%;
+}
+.name {
+    height: 34px;
+    outline: none;
+}
+.errorInput {
+    height: 34px;
+    border-color: red;
+    outline: none;
+}
+.ui.button {
+    margin-left: 5px;
 }

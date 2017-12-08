@@ -10,6 +10,8 @@ export class AdminboardComponent implements OnInit {
   addItem: boolean = false;
   showAllUsers: string = "";
   allUsers: boolean = false;
+  showAdminAllItems: string = "";
+  adminAllItems: boolean = false;
 
   constructor() { }
 
@@ -23,12 +25,24 @@ export class AdminboardComponent implements OnInit {
     this.addItem = true;
     this.showAllUsers = "";
     this.allUsers = false;
+    this.showAdminAllItems= "";
+    this.adminAllItems = false;
   }
-   showAllUsersBoard() {
+  showAllUsersBoard() {
     this.showAllUsers = "active";
     this.allUsers = true;
     this.showAddItem = "";
     this.addItem = false;
+    this.showAdminAllItems= "";
+    this.adminAllItems = false;
+  }
+  showAdminAllItemsBoard() {
+    this.showAdminAllItems= "active";
+    this.adminAllItems = true;
+    this.showAddItem = "";
+    this.addItem = false;
+    this.showAllUsers = "";
+    this.allUsers = false;
   }
 
 }

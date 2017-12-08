@@ -34,10 +34,13 @@
     </div>
     <div class="field">
       <label for="kind">Kind:</label>
-      <select size="7" name="kind" id="kind" [(ngModel)]="newItem.kind" required #kind="ngModel">
+      <select style="overflow-y: auto" size="7" name="kind" id="kind" [(ngModel)]="newItem.kind" required #kind="ngModel">
         <option>Meats</option>
         <option>Dairy</option>
+        <option>Bakery</option>
         <option>Fruits</option>
+        <option>Oil/Sauce</option>
+        <option>Chips</option>
         <option>Vegetables</option>
         <option>Drinks</option>
         <option>Frozen goods</option>

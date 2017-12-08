@@ -104,7 +104,7 @@ function update(_id, itemlistParam) {
     function updateItemList() {
         //fields to update
         var set = {
-            listName: itemlistParam.listname,
+            listname: itemlistParam.listname,
             items: itemlistParam.items,
             user: itemlistParam.user,
             itemIds: itemlistParam.itemIds,

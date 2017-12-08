@@ -17,6 +17,9 @@ export class CreatelistComponent implements OnInit {
   localList: string[] = [];
   newItemList: ItemList;
 
+  listName: any = { "listname" : "Default"};
+  creatingList: boolean = false;
+
   rangeItems: Item[] = [];
   pages: number[] = [];
   activePage: number = 0;
@@ -57,39 +60,30 @@ export class CreatelistComponent implements OnInit {
     return false;
   }
 
-  createList() {
-    // let listItems: Item[] = [];
-    // this.allItems.forEach(item => {
-    //   if (this.localList.find(itemid => itemid == item._id)){
-    //     this.itemService.getItemById(item._id).subscribe(
-    //       item => {
-    //         listItems.push(item);
-    //       }
-    //     )
-    //   }
-    // });
-    // let currentUser: User;
-      // this.userService.getUserById(userId._id).subscribe(
-      //   user => {
-      //     currentUser = user;
-      //   }
-      // );
+  closeCreateList() {
+    this.creatingList = false;
+  }
+  create() {
     if (this.localList.length != 0) {
-      let user: any = JSON.parse(localStorage.getItem("loggedUser"));
-      this.newItemList = new ItemList("testList",this.localList,user._id)
-      console.log(this.newItemList);
-      this.itemListService.create(this.newItemList).subscribe(
-        data => {
-          this.alertService.success("Created new list");
-          this.localList.length = 0;
-        },
-        error => {
-          this.alertService.error("Creating list failed: "+error);
-        }
-      );
+      this.creatingList = true;
     } else {
       this.alertService.error("Creating list failed: No items in list");
     }
+  }
+  createList() {
+    let user: any = JSON.parse(localStorage.getItem("loggedUser"));
+    this.newItemList = new ItemList(this.listName.listname,this.localList,user._id)
+    console.log(this.newItemList);
+    this.itemListService.create(this.newItemList).subscribe(
+      data => {
+        this.alertService.success("Created new list");
+        this.localList.length = 0;
+        this.creatingList = false;
+      },
+      error => {
+        this.alertService.error("Creating list failed: "+error);
+      }
+    );
   }
 
   setPage(page){

@@ -40,3 +40,5 @@ const routes: Routes = [
 })
 
 export class AppRoutingModule { }
+// for testing
+export const appRoutes = routes;

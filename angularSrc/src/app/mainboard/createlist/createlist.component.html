@@ -24,7 +24,7 @@
       <tr>
         <th>Itemcount:  {{allItems.length}}</th>
         <th colspan="4">
-          <div class="ui small button" (click)="createList()">
+          <div class="ui small button" (click)="create()">
             Create list
           </div>
         </th>
@@ -36,3 +36,22 @@
 <div class="ui buttons">
     <div class="ui button {{page==activePage? 'active': ''}}" *ngFor="let page of pages" (click)="setPage(page)">{{page}}</div>
 </div>
+
+<div *ngIf="creatingList" class="choiceWindow">
+    <div class="ui raised segment">
+      <div><i class="close icon" (click)="closeCreateList()"></i></div>
+      <div class="field" id="questionandicondiv">
+        <div class="questiondiv">
+          <h2 class="ui header">How do you wish to name you list?</h2>
+        </div>
+        <div class="icondiv">
+          <i class="help icon"></i>
+        </div>
+      </div>
+      <div class="field" id="listnameSave">
+        <input name="listname" [(ngModel)]='listName.listname' pattern="[a-zA-Z0-9 ]*" #listname="ngModel" required
+          [ngClass]="{'errorInput': listname.invalid && listname.dirty, 'name': listname.valid }">
+        <button class="ui button" (click)="createList()">OK</button>
+      </div>
+    </div>
+  </div>

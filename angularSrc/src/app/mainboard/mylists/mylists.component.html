@@ -1,48 +1,55 @@
+<alert></alert>
 <div id="pagecontent">
-  <div class="listcontent" *ngFor="let item of rangeItems; let i = index">
+  <div *ngIf="noLists" class="noLists"><h3>[There are no lists]</h3></div>
+  <div class="listcontent" *ngFor="let itemlist of rangeItems; let i = index">
+    <div *ngIf="geefAllListItems(itemlist._id)"></div>
     <h5 class="ui horizontal header divider">
-      {{item.listname}}
+      {{itemlist.listname}}
     </h5>
-    <div *ngIf="!loading" class="ui segment">
-      <div class="ui top left attached label">Edit</div>
-      <div class="ui bottom left attached label">
+    <div class="ui segment">
+      <div class="ui top left attached label" (click)="editTitle(itemlist._id)">Edit</div>
+      <div class="ui bottom left attached label" (click)="deleteList(itemlist._id)">
         <i class="trash icon"></i>
       </div>
-      <div class="ui divided very relaxed animated list" *ngFor="let item of geefAllListItems(item._id)">
-        <div class="item">
-          <div class="ui top aligned avatar image">
-            <i class="list icon"></i>
-          </div>
-          <div class="content">
-            <div class="header">Header</div>
-            Description
+      <div class="listitemsContent">
+        <div *ngIf="!loading" class="ui divided relaxed horizontal list">
+          <div class="item" *ngFor="let item of listItems">
+            <div class="ui top aligned avatar image">
+              <i class="list icon"></i>
+            </div>
+            <div class="content">
+              <div class="header">{{item.productname}}</div>
+              in {{item.inShop}}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div *ngIf="loading" class="ui segment">
-      <div class="ui active inverted dimmer">
-        <div class="ui indeterminate text active loader">
-          Preparing...
-        </div>
-      </div>
-      <br><br>
-      <br><br>
-      <br><br>
     </div>
   </div>
 </div>
 <div class="ui buttons">
   <div class="ui button {{page==activePage? 'active': ''}}" *ngFor="let page of pages" (click)="setPage(page)">{{page}}</div>
 </div>
-<!-- 
-<div class="ui divided very relaxed animated list">
-    <div class="item">
-      <div class="ui top aligned avatar image">
-        <img src="/images/wireframe/square-image.png">
+
+<div *ngIf="editListname" class="choiceWindow">
+  <div class="ui raised segment">
+    <div><i class="close icon" (click)="closeEditListname()"></i></div>
+    <div class="field" id="questionandicondiv">
+      <div class="questiondiv">
+        <h2 class="ui header">How do you wish to rename you list?</h2>
       </div>
-      <div class="content">
-        <div class="header">Header</div>
-        Description
+      <div class="icondiv">
+        <i class="help icon"></i>
       </div>
-    </div> -->
+    </div>
+    <div class="field" id="listnameSave">
+      <input name="listname" [(ngModel)]='newListName.listname' pattern="[a-zA-Z0-9 ]*" #listname="ngModel" required
+        [ngClass]="{'errorInput': listname.invalid && listname.dirty, 'name': listname.valid }">
+      <!-- <div class="ui pointing below label" *ngIf="listname.invalid && listname.dirty" id="error">
+        <div *ngIf="listname.errors.required">Listname is required</div>
+        <div *ngIf="listname.errors.pattern">Should only exist of characters</div>
+      </div> -->
+      <button class="ui button" (click)="saveTitle()">Save</button>
+    </div>
+  </div>
+</div>

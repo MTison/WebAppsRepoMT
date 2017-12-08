@@ -25,6 +25,7 @@ import { ItemListService } from './services/itemList.service';
 
 import { AuthGuard } from './_guards/auth.guard';
 import { NgxPermissionsModule } from 'ngx-permissions';
+import { AdminallitemsComponent } from './adminboard/adminallitems/adminallitems.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { NgxPermissionsModule } from 'ngx-permissions';
     AlertComponent,
     AdminboardComponent,
     AdditemComponent,
-    AllusersComponent
+    AllusersComponent,
+    AdminallitemsComponent
   ],
   imports: [
     BrowserModule,
