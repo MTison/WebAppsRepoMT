@@ -5,8 +5,8 @@ import { Item } from '../models/item.model';
  
 @Injectable()
 export class ItemService {
-    //inDevelopment: boolean = true;
-    inDevelopment: boolean = false;
+    inDevelopment: boolean = true;
+    //inDevelopment: boolean = false;
 
     constructor(private http: Http) { }
  
