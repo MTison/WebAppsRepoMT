@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
   previousUrl: string;
   
-
   constructor(private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
